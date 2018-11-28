@@ -176,20 +176,15 @@
 	[super viewDidDisappear:animated];
 }
 
-//- (void)viewDidUnload
-//{
-//#ifdef DEBUG
-//    NSLog(@"%s", __FUNCTION__);
-//#endif
-//
-//    mainToolbar = nil; theThumbsView = nil;
-//
-//    [super viewDidUnload];
-//}
--(void)dealloc
+- (void)viewDidUnload
 {
-    mainToolbar = nil;
-    theThumbsView = nil;
+#ifdef DEBUG
+	NSLog(@"%s", __FUNCTION__);
+#endif
+
+	mainToolbar = nil; theThumbsView = nil;
+
+	[super viewDidUnload];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -202,10 +197,10 @@
 	return UIStatusBarStyleLightContent;
 }
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    return YES;
-//}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return YES;
+}
 
 /*
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -261,7 +256,7 @@
 				[document.bookmarks enumerateIndexesUsingBlock: // Enumerate
 					^(NSUInteger page, BOOL *stop)
 					{
-                        [self->bookmarked addObject:[NSNumber numberWithInteger:page]];
+						[bookmarked addObject:[NSNumber numberWithInteger:page]];
 					}
 				];
 

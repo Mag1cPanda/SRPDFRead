@@ -8,10 +8,14 @@
 
 #import "LocalResourceListVC.h"
 #import "SRDirectoryWatcher.h"
+#import "ReaderViewController.h"
+
+#define DocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 
 static NSString *cellID = @"cellID";
 
 @interface LocalResourceListVC ()
+<ReaderViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @end
 
@@ -71,7 +75,9 @@ static NSString *cellID = @"cellID";
     
     [self.dataArr addObjectsFromArray:fileArray];
     
-    [self.tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 
@@ -83,8 +89,27 @@ static NSString *cellID = @"cellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.textLabel.text = self.dataArr[indexPath.row];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",DocumentPath,self.dataArr[indexPath.row]];
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:filePath password:nil];
+    if (document) {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+        readerViewController.delegate = self;
+//        [self.navigationController pushViewController:readerViewController animated:YES];
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }
+}
+
+#pragma mark - ReaderViewControllerDelegate methods
+- (void)dismissReaderViewController:(ReaderViewController *)viewController
+{
+//    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -79,7 +79,7 @@
 		UIImage *buttonN = [[UIImage imageNamed:@"Reader-Button-N"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 #endif // end of READER_FLAT_UI Option
 
-//        BOOL largeDevice = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad);
+		BOOL largeDevice = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad);
 
 		const CGFloat buttonSpacing = BUTTON_SPACE; const CGFloat iconButtonWidth = ICON_BUTTON_WIDTH;
 
@@ -105,8 +105,6 @@
 		doneButton.autoresizingMask = UIViewAutoresizingNone;
 		//doneButton.backgroundColor = [UIColor grayColor];
 		doneButton.exclusiveTouch = YES;
-        
-        self.doneButton = doneButton;
 
 		[self addSubview:doneButton]; leftButtonX += (doneButtonWidth + buttonSpacing);
 
@@ -125,8 +123,6 @@
 		thumbsButton.autoresizingMask = UIViewAutoresizingNone;
 		//thumbsButton.backgroundColor = [UIColor grayColor];
 		thumbsButton.exclusiveTouch = YES;
-        
-        self.thumbsButton = thumbsButton;
 
 		[self addSubview:thumbsButton]; //leftButtonX += (iconButtonWidth + buttonSpacing);
 
@@ -156,8 +152,6 @@
 
 		markImageN = [UIImage imageNamed:@"Reader-Mark-N"]; // N image
 		markImageY = [UIImage imageNamed:@"Reader-Mark-Y"]; // Y image
-        
-        self.markButton = markButton;
 
 #endif // end of READER_BOOKMARKS Option
 
@@ -180,8 +174,6 @@
 					emailButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 					//emailButton.backgroundColor = [UIColor grayColor];
 					emailButton.exclusiveTouch = YES;
-                    
-                    self.emailButton = emailButton;
 
 					[self addSubview:emailButton]; titleWidth -= (iconButtonWidth + buttonSpacing);
 				}
@@ -205,8 +197,6 @@
 				printButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 				//printButton.backgroundColor = [UIColor grayColor];
 				printButton.exclusiveTouch = YES;
-                
-                self.printButton = printButton;
 
 				[self addSubview:printButton]; titleWidth -= (iconButtonWidth + buttonSpacing);
 			}
@@ -225,39 +215,32 @@
 			exportButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 			//exportButton.backgroundColor = [UIColor grayColor];
 			exportButton.exclusiveTouch = YES;
-            
-            self.exportButton = exportButton;
 
 			[self addSubview:exportButton]; titleWidth -= (iconButtonWidth + buttonSpacing);
 		}
 
-//        if (largeDevice == YES) // Show document filename in toolbar
-//        {
-//        }
-        
-        titleX = ([UIScreen mainScreen].bounds.size.width-titleWidth)/2;
-        
-        CGRect titleRect = CGRectMake(titleX, BUTTON_Y, titleWidth, TITLE_HEIGHT);
-        
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:titleRect];
-//        titleLabel.backgroundColor = [UIColor redColor];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.font = [UIFont systemFontOfSize:TITLE_FONT_SIZE];
-        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-        titleLabel.textColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
-        titleLabel.adjustsFontSizeToFitWidth = YES;
-        titleLabel.minimumScaleFactor = 0.75f;
-        titleLabel.text = [document.fileName stringByDeletingPathExtension];
+		if (largeDevice == YES) // Show document filename in toolbar
+		{
+			CGRect titleRect = CGRectMake(titleX, BUTTON_Y, titleWidth, TITLE_HEIGHT);
+
+			UILabel *titleLabel = [[UILabel alloc] initWithFrame:titleRect];
+
+			titleLabel.textAlignment = NSTextAlignmentCenter;
+			titleLabel.font = [UIFont systemFontOfSize:TITLE_FONT_SIZE];
+			titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+			titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+			titleLabel.textColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
+			titleLabel.backgroundColor = [UIColor clearColor];
+			titleLabel.adjustsFontSizeToFitWidth = YES;
+			titleLabel.minimumScaleFactor = 0.75f;
+			titleLabel.text = [document.fileName stringByDeletingPathExtension];
 #if (READER_FLAT_UI == FALSE) // Option
-        titleLabel.shadowColor = [UIColor colorWithWhite:0.75f alpha:1.0f];
-        titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+			titleLabel.shadowColor = [UIColor colorWithWhite:0.75f alpha:1.0f];
+			titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 #endif // end of READER_FLAT_UI Option
-        
-        self.titleLabel = titleLabel;
-        
-        [self addSubview:titleLabel];
-        
+
+			[self addSubview:titleLabel]; 
+		}
 	}
 
 	return self;

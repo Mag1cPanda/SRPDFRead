@@ -260,7 +260,6 @@
 			[self requeueThumbCell:tvCell]; // Requeue the thumb cell
 		}
 
-        
 		[visibleIndexSet enumerateIndexesUsingBlock: // Enumerate visible indexes
 			^(NSUInteger index, BOOL *stop)
 			{
@@ -268,7 +267,7 @@
 
 				ReaderThumbView *tvCell = [self dequeueThumbCellWithFrame:thumbRect];
 
-                [self->delegate thumbsView:self updateThumbCell:tvCell forIndex:index];
+				[delegate thumbsView:self updateThumbCell:tvCell forIndex:index];
 
 				tvCell.tag = index; tvCell.hidden = NO; // Tag and show it
 			}
@@ -494,7 +493,7 @@
 
 						ReaderThumbView *tvCell = [self dequeueThumbCellWithFrame:thumbRect];
 
-                        [self->delegate thumbsView:self updateThumbCell:tvCell forIndex:index];
+						[delegate thumbsView:self updateThumbCell:tvCell forIndex:index];
 
 						tvCell.tag = index; tvCell.hidden = NO; // Tag and show it
 					}

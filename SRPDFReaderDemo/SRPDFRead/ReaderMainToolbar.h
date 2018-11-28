@@ -47,17 +47,6 @@
 
 @property (nonatomic, weak, readwrite) id <ReaderMainToolbarDelegate> delegate;
 
-@property (nonatomic, strong) UIButton *doneButton;
-@property (nonatomic, strong) UIButton *thumbsButton;
-
-@property (nonatomic, strong) UIButton *emailButton;
-@property (nonatomic, strong) UIButton *printButton;
-@property (nonatomic, strong) UIButton *exportButton;
-
-@property (nonatomic, strong) UIButton *markButton;
-
-@property (nonatomic, strong) UILabel *titleLabel;
-
 - (instancetype)initWithFrame:(CGRect)frame document:(ReaderDocument *)document;
 
 - (void)setBookmarkState:(BOOL)state;

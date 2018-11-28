@@ -479,7 +479,7 @@
 			}
 			else // Error out with a diagnostic
 			{
-                (void)(CGPDFDocumentRelease(_PDFDocRef)), _PDFDocRef = NULL;
+				CGPDFDocumentRelease(_PDFDocRef), _PDFDocRef = NULL;
 
 				NSAssert(NO, @"CGPDFPageRef == NULL");
 			}
@@ -512,9 +512,9 @@
 
 - (void)dealloc
 {
-    (void)(CGPDFPageRelease(_PDFPageRef)), _PDFPageRef = NULL;
+	CGPDFPageRelease(_PDFPageRef), _PDFPageRef = NULL;
 
-    (void)(CGPDFDocumentRelease(_PDFDocRef)), _PDFDocRef = NULL;
+	CGPDFDocumentRelease(_PDFDocRef), _PDFDocRef = NULL;
 }
 
 #if (READER_DISABLE_RETINA == TRUE) // Option
@@ -538,12 +538,10 @@
 
 	//NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(CGContextGetClipBoundingBox(context)));
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        CGContextTranslateCTM(context, 0.0f, self.bounds.size.height); CGContextScaleCTM(context, 1.0f, -1.0f);
-        
-        CGContextConcatCTM(context, CGPDFPageGetDrawingTransform(self->_PDFPageRef, kCGPDFCropBox, self.bounds, 0, true));
-    });
-    
+	CGContextTranslateCTM(context, 0.0f, self.bounds.size.height); CGContextScaleCTM(context, 1.0f, -1.0f);
+
+	CGContextConcatCTM(context, CGPDFPageGetDrawingTransform(_PDFPageRef, kCGPDFCropBox, self.bounds, 0, true));
+
 	//CGContextSetRenderingIntent(context, kCGRenderingIntentDefault); CGContextSetInterpolationQuality(context, kCGInterpolationDefault);
 
 	CGContextDrawPDFPage(context, _PDFPageRef); // Render the PDF page into the context

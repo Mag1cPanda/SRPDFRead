@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    self.title = @"PDF Demo";
 }
 
 #pragma mark - Action
@@ -86,7 +86,6 @@
 
 - (void)dismissReaderViewController:(ReaderViewController *)viewController
 {
-//    [self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

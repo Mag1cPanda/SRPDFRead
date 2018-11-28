@@ -107,7 +107,7 @@
 
 			viewRect.origin.x = (viewRect.size.width * (page - 1)); // Update X
 
-            contentView.frame = CGRectInset(viewRect, self->scrollViewOutset, 0.0f);
+			contentView.frame = CGRectInset(viewRect, scrollViewOutset, 0.0f);
 		}
 	];
 
@@ -318,14 +318,6 @@
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    mainToolbar = nil; mainPagebar = nil;
-    
-    theScrollView = nil; contentViews = nil; lastHideTime = nil;
-    
-    documentInteraction = nil; printInteraction = nil;
-    
-    lastAppearSize = CGSizeZero; currentPage = 0;
 }
 
 - (void)viewDidLoad
@@ -364,9 +356,6 @@
 
 	CGRect toolbarRect = viewRect; toolbarRect.size.height = TOOLBAR_HEIGHT;
 	mainToolbar = [[ReaderMainToolbar alloc] initWithFrame:toolbarRect document:document]; // ReaderMainToolbar
-    mainToolbar.emailButton.hidden = YES;
-    mainToolbar.printButton.hidden = YES;
-    mainToolbar.exportButton.hidden = YES;
 	mainToolbar.delegate = self; // ReaderMainToolbarDelegate
 	[self.view addSubview:mainToolbar];
 
@@ -446,28 +435,27 @@
 	[super viewDidDisappear:animated];
 }
 
-//- (void)viewDidUnload
-//{
-//#ifdef DEBUG
-//    NSLog(@"%s", __FUNCTION__);
-//#endif
-//
-//    mainToolbar = nil; mainPagebar = nil;
-//
-//    theScrollView = nil; contentViews = nil; lastHideTime = nil;
-//
-//    documentInteraction = nil; printInteraction = nil;
-//
-//    lastAppearSize = CGSizeZero; currentPage = 0;
-//
-//    [super viewDidUnload];
-//}
+- (void)viewDidUnload
+{
+#ifdef DEBUG
+	NSLog(@"%s", __FUNCTION__);
+#endif
 
+	mainToolbar = nil; mainPagebar = nil;
 
-//- (BOOL)prefersStatusBarHidden
-//{
-//    return YES;
-//}
+	theScrollView = nil; contentViews = nil; lastHideTime = nil;
+
+	documentInteraction = nil; printInteraction = nil;
+
+	lastAppearSize = CGSizeZero; currentPage = 0;
+
+	[super viewDidUnload];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+	return YES;
+}
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
