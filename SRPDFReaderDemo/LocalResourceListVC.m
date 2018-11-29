@@ -73,6 +73,7 @@ static NSString *cellID = @"cellID";
     NSArray <NSString *> *fileArray = [fileManager contentsOfDirectoryAtPath:filePath error:&error];
     NSLog(@"%@", fileArray);
     
+    [self.dataArr removeAllObjects];
     [self.dataArr addObjectsFromArray:fileArray];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -106,6 +107,11 @@ static NSString *cellID = @"cellID";
 }
 
 #pragma mark - ReaderViewControllerDelegate methods
+-(void)readerViewController:(ReaderViewController *)viewController didScrollToPage:(NSInteger)page
+{
+    NSLog(@"page %zi",page);
+}
+
 - (void)dismissReaderViewController:(ReaderViewController *)viewController
 {
 //    [self.navigationController popViewControllerAnimated:YES];

@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "LocalResourceListVC.h"
 #import "NetResourceListVC.h"
-#import "ReaderViewController.h"
+#import "SRPDFReaderVC.h"
 
 @interface ViewController ()
 <ReaderViewControllerDelegate>
@@ -39,31 +39,16 @@
     
     if (document != nil) // Must have a valid ReaderDocument object in order to proceed with things
     {
-        ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+        SRPDFReaderVC *readerVC = [[SRPDFReaderVC alloc] initWithReaderDocument:document];
         
-        readerViewController.delegate = self; // Set the ReaderViewController delegate to self
+        readerVC.delegate = self; // Set the ReaderViewController delegate to self
         
-        //        [self.navigationController pushViewController:readerViewController animated:YES];
+//        [self.navigationController pushViewController:readerVC animated:YES];
         
-//        UIModalTransitionStyleCoverVertical = 0,
-//        UIModalTransitionStyleFlipHorizontal,
-//        UIModalTransitionStyleCrossDissolve,
-//        UIModalTransitionStylePartialCurl
-        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        
-//        UIModalPresentationFullScreen = 0,
-//        UIModalPresentationPageSheet NS_ENUM_AVAILABLE_IOS(3_2) __TVOS_PROHIBITED,
-//        UIModalPresentationFormSheet NS_ENUM_AVAILABLE_IOS(3_2) __TVOS_PROHIBITED,
-//        UIModalPresentationCurrentContext NS_ENUM_AVAILABLE_IOS(3_2),
-//        UIModalPresentationCustom NS_ENUM_AVAILABLE_IOS(7_0),
-//        UIModalPresentationOverFullScreen NS_ENUM_AVAILABLE_IOS(8_0),
-//        UIModalPresentationOverCurrentContext NS_ENUM_AVAILABLE_IOS(8_0),
-//        UIModalPresentationPopover NS_ENUM_AVAILABLE_IOS(8_0) __TVOS_PROHIBITED,
-//        UIModalPresentationBlurOverFullScreen __TVOS_AVAILABLE(11_0) __IOS_PROHIBITED __WATCHOS_PROHIBITED,
-//        UIModalPresentationNone NS_ENUM_AVAILABLE_IOS(7_0) = -1,
-        readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-        
-        [self presentViewController:readerViewController animated:YES completion:NULL];
+
+        readerVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        readerVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:readerVC animated:YES completion:NULL];
         
     }
     else // Log an error so that we know that something went wrong
@@ -83,9 +68,14 @@
 }
 
 #pragma mark - ReaderViewControllerDelegate methods
+-(void)readerViewController:(ReaderViewController *)viewController didScrollToPage:(NSInteger)page
+{
+    NSLog(@"%zi",page);
+}
 
 - (void)dismissReaderViewController:(ReaderViewController *)viewController
 {
+//    [self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

@@ -35,6 +35,8 @@
 
 - (void)dismissReaderViewController:(ReaderViewController *)viewController;
 
+- (void)readerViewController:(ReaderViewController *)viewController didScrollToPage:(NSInteger)page;
+
 @end
 
 @interface ReaderViewController : UIViewController

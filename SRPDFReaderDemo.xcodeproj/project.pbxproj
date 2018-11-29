@@ -27,6 +27,7 @@
 		5841BD7E21AE3B0900781983 /* ReaderThumbRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5841BD7021AE3B0700781983 /* ReaderThumbRequest.m */; };
 		5841BD7F21AE3B0900781983 /* UIXToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5841BD7221AE3B0800781983 /* UIXToolbarView.m */; };
 		5841BD8021AE3B0900781983 /* ReaderThumbRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 5841BD7321AE3B0800781983 /* ReaderThumbRender.m */; };
+		5841BD8321AE965500781983 /* SRPDFReaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5841BD8221AE965500781983 /* SRPDFReaderVC.m */; };
 		58AD351221A69FD60018A19A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD351121A69FD60018A19A /* AppDelegate.m */; };
 		58AD351521A69FD60018A19A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD351421A69FD60018A19A /* ViewController.m */; };
 		58AD351821A69FD60018A19A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AD351621A69FD60018A19A /* Main.storyboard */; };
@@ -104,6 +105,8 @@
 		5841BD7421AE3B0800781983 /* ReaderThumbFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbFetch.h; sourceTree = "<group>"; };
 		5841BD7521AE3B0800781983 /* ReaderThumbRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbRequest.h; sourceTree = "<group>"; };
 		5841BD7621AE3B0800781983 /* ReaderThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbView.h; sourceTree = "<group>"; };
+		5841BD8121AE965500781983 /* SRPDFReaderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRPDFReaderVC.h; sourceTree = "<group>"; };
+		5841BD8221AE965500781983 /* SRPDFReaderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRPDFReaderVC.m; sourceTree = "<group>"; };
 		58AD350D21A69FD60018A19A /* SRPDFReaderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRPDFReaderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AD351021A69FD60018A19A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58AD351121A69FD60018A19A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 				58AD351121A69FD60018A19A /* AppDelegate.m */,
 				58AD351321A69FD60018A19A /* ViewController.h */,
 				58AD351421A69FD60018A19A /* ViewController.m */,
+				5841BD8121AE965500781983 /* SRPDFReaderVC.h */,
+				5841BD8221AE965500781983 /* SRPDFReaderVC.m */,
 				58AD359921A6B28B0018A19A /* LocalResourceListVC.h */,
 				58AD359A21A6B28B0018A19A /* LocalResourceListVC.m */,
 				58AD359C21A6B29E0018A19A /* NetResourceListVC.h */,
@@ -377,6 +382,7 @@
 				5841BD7F21AE3B0900781983 /* UIXToolbarView.m in Sources */,
 				5841BD7721AE3B0900781983 /* ReaderDocumentOutline.m in Sources */,
 				5841BD7E21AE3B0900781983 /* ReaderThumbRequest.m in Sources */,
+				5841BD8321AE965500781983 /* SRPDFReaderVC.m in Sources */,
 				5841BD5F21AE3AF600781983 /* ReaderContentTile.m in Sources */,
 				5841BD5A21AE3AF600781983 /* ReaderMainToolbar.m in Sources */,
 				5841BD5C21AE3AF600781983 /* ThumbsViewController.m in Sources */,

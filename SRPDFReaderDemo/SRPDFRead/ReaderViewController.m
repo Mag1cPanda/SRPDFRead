@@ -138,6 +138,8 @@
 	contentView.message = self; [contentViews setObject:contentView forKey:[NSNumber numberWithInteger:page]]; [scrollView addSubview:contentView];
 
 	[contentView showPageThumb:fileURL page:page password:phrase guid:guid]; // Request page preview thumb
+    
+    
 }
 
 - (void)layoutContentViews:(UIScrollView *)scrollView
@@ -224,6 +226,11 @@
 		[mainToolbar setBookmarkState:[document.bookmarks containsIndex:page]];
 
 		[mainPagebar updatePagebar]; // Update page bar
+        
+        //Custom
+        if ([delegate respondsToSelector:@selector(readerViewController:didScrollToPage:)]) {
+            [delegate readerViewController:self didScrollToPage:page];
+        }
 	}
 }
 
@@ -252,6 +259,11 @@
 		[mainToolbar setBookmarkState:[document.bookmarks containsIndex:page]];
 
 		[mainPagebar updatePagebar]; // Update page bar
+        
+        //Custom
+        if ([delegate respondsToSelector:@selector(readerViewController:didScrollToPage:)]) {
+            [delegate readerViewController:self didScrollToPage:page];
+        }
 	}
 }
 
